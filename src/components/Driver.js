@@ -19,6 +19,7 @@ const Driver = () => {
   const [watchData, setWatchData] = useState([])
   const [modalData, setModalData] = useState({});
 
+  // increment count by a specific amount
   const UpdateCount = (upd_by) => {
     let prev = count
     let newCount = count + upd_by 
@@ -40,11 +41,12 @@ const Driver = () => {
 
   const addWatch = (modal=false) => {
     let key = watchData.length + 1
+    // default settings for quick add of stopwatch
     let element =  {key: key, running:true, show_buttons: true, reset_on_cycle: true, reset_on_amount: true }
     if (modal) {
+      // modal may have set specific stopwatch configuration
       element = {...element, ...modalData}
     }
-    // console.log('element in add watch', element)
     setWatchData([...watchData, ...[element]])
   }
   
@@ -52,11 +54,11 @@ const Driver = () => {
     setWatchData(watchData.slice(0,-1))
   }
 
-  const IncNum = () => {
+  const increment = () => {
     UpdateCount(amount)
   };
 
-  const DecNum = () => {
+  const decrement = () => {
     UpdateCount(-Math.abs(amount))
   };
 
@@ -64,8 +66,8 @@ const Driver = () => {
     setAmount(evt.value)
   }
 
-  const ButtonProps = {decrement: DecNum, increment: IncNum, 
-                       addWatch: addWatch, removeWatch: removeWatch}
+  const ButtonProps = {decrement, increment,
+                       addWatch, removeWatch}
 
   return (
     <div id="app-main">

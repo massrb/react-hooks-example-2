@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { DriverContext } from "./Driver";
 
 const SelectButton = ({name, label}) => {
@@ -6,15 +6,15 @@ const SelectButton = ({name, label}) => {
   const [modalData, setModalData] = useContext(DriverContext)['modal'];
 
   const changeStyle = (event) => {
-  	let obj = {}
+  	let val = false
   	if (style === 'unclicked-button') {
   		setStyle('clicked-button')
-  		obj[name] = true
+  		val = true
   	} else {
   		setStyle('unclicked-button')
-  		 obj[name] = false
   	}
-  	setModalData({...modalData, ...obj})
+
+  	setModalData({...modalData, ...{[name]: val}})
     event.preventDefault();
   }
 
