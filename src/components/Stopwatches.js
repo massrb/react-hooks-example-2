@@ -1,8 +1,7 @@
 import Stopwatch from './Stopwatch'
 
 const Stopwatches = ({amount, cycle, watchData}) => {
-
-  const watchList = watchData.map((attr) => {
+  const watchList = watchData.map((attr, idx) => {
     let params = {...attr, ...{amount: amount, cycle: cycle}}
     return(
       <li key={attr.key}>

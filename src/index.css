@@ -43,3 +43,7 @@ code {
 .clicked-button {
   background-color: lightblue;
 }
+
+ul {
+    list-style-type: none;
+}

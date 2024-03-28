@@ -1,5 +1,4 @@
 import Modal from 'react-modal';
-import React, { useState } from "react";
 import SelectButton from './SelectButton';
 
 const WatchModal = ({open, closeModal}) => {
@@ -15,7 +14,6 @@ const WatchModal = ({open, closeModal}) => {
     },
   };
 
-  // Modal.setAppElement('#button-top');
   Modal.setAppElement('body')
   
   return (
@@ -27,13 +25,16 @@ const WatchModal = ({open, closeModal}) => {
         contentLabel="Example Modal"
       >
         <h2>New Stopwatch</h2>
-        <button onClick={closeModal}>close</button>
-        <div>Select settings</div>
+        <button onClick={() => closeModal(false)}>close</button>
+        <button onClick={() => closeModal(true)} >save</button>
+        <br/>
+        <br/>
+        <div>Select settings for stopwatch</div>
         <br/>
         <form>
-          <SelectButton label='Show Buttons' />
-          <SelectButton label='Reset on amount change' />
-          <SelectButton label='Reset on cycle past zero' />
+          <SelectButton name='show_buttons' label='Show Buttons' />
+          <SelectButton name='reset_on_amount' label='Reset on amount change' />
+          <SelectButton name= 'reset_on_cycle' label='Reset on cycle past zero' />
         </form>
       </Modal>
     </div>

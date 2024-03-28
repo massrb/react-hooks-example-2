@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 
-const Stopwatch = ({running, amount, cycle, showButtons}) => {
+const Stopwatch = ({running, amount, cycle, show_buttons, reset_on_amount, reset_on_cycle}) => {
   // state to store time
   const [time, setTime] = useState(0);
 
@@ -11,8 +11,18 @@ const Stopwatch = ({running, amount, cycle, showButtons}) => {
   // If the appropriate property
   // has changed then we reset the timer.
   useEffect(() => {
-    setTime(0)
-  }, [amount, cycle])
+    if (reset_on_amount) {
+      setTime(0)
+    }
+  // eslint-disable-next-line
+  }, [amount])
+
+  useEffect(() => {
+    if (reset_on_cycle) {
+      setTime(0)
+    }
+  // eslint-disable-next-line
+  }, [cycle])
 
   // This effect is constantly called if the timer is running
   // as setTime will change the time which it is observing
@@ -53,7 +63,7 @@ const Stopwatch = ({running, amount, cycle, showButtons}) => {
         {seconds.toString().padStart(2, "0")}:
         {milliseconds.toString().padStart(2, "0")}
       </p>
-      { showButtons === true ?
+      { show_buttons === true ?
         <div className="stopwatch-buttons">
           <button className="stopwatch-button" onClick={startAndStop}>
             {isRunning ? "Stop" : "Start"}
