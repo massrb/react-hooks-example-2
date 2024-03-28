@@ -11,3 +11,6 @@ change the displayed count. If the count changes from a number to zero or passes
 positive and negative then the this timer will reset. The count can also be incremented or decremented 
 by more than one by selecting from the drop down. Whenever that selection changes then the this timer resets.
 The timer at the top never resets. 
+
+
+### This example has buttons to add and remove more timers and a modal to configure timers

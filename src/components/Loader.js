@@ -13,7 +13,7 @@ const Loader = ({children}) => {
       setLoading(false)
       clearInterval(timer)
     },
-    1000)
+    2000)
   }
 
   if (isLoading) {
